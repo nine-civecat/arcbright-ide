@@ -17,7 +17,7 @@ jobs:
       
       - name: Clone VS Code
         run: |
-          git clone --depth 1 --branch 1.125.0 https://github.com/microsoft/vscode.git vscode
+          git clone --depth 1 --branch 1.124.2 https://github.com/microsoft/vscode.git vscode
       
       - name: Apply ArcBright patches
         run: |
