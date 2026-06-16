@@ -32,7 +32,7 @@ jobs:
       - name: Build
         run: |
           cd vscode
-          npm install --ignore-scripts
+          npm install
           npx gulp vscode-linux-x64
       
       - name: Package
