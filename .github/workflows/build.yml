@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
       
@@ -17,14 +19,15 @@ jobs:
       
       - name: Clone VS Code
         run: |
-          git clone --depth 1 --branch 1.124.2 https://github.com/microsoft/vscode.git vscode
+          git clone --depth 1 --branch 1.124.2 https://github.com/microsoft/vscode.git vscode || \
+          git clone --depth 1 https://github.com/microsoft/vscode.git vscode && cd vscode && git fetch --depth 1 origin tag 1.124.2 && git checkout 1.124.2
       
       - name: Apply ArcBright patches
         run: |
           cp -r patches/* vscode/
           cd vscode
           rm -rf extensions/copilot
-          sed -i '/copilot/d' package.json remote/package.json 2>/dev/null || true
+          sed -i '/@github\/copilot/d' package.json remote/package.json 2>/dev/null || true
       
       - name: Build
         run: |
