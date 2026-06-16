@@ -56,7 +56,7 @@ export class ActivitybarPart extends Part {
 	static readonly viewContainersWorkspaceStateKey = 'workbench.activity.viewletsWorkspaceState';
 
 	/** Hermes Agent view containers that should always be pinned in the activity bar */
-	static readonly HERMES_PINNED_IDS = ['hermes-agent', 'hermes-sessions', 'hermes-cron'];
+	static readonly HERMES_PINNED_IDS = ['hermes-agent', 'hermes-sessions', 'hermes-cron', 'hermes-usage', 'hermes-knowledge'];
 
 	//#region IView
 

@@ -1,23 +1,15 @@
-/* ArcBright Animation System
- * Extracted from arcbright-ide-icons.html design reference
- * ── hl-glow, hl-border, hl-cursor, hl-pulse ── */
 
-@keyframes hl-glow {
-	0%, 100% { box-shadow: 0 0 0 0 var(--arcbright-glow-color, rgba(24, 160, 88, 0.12)); }
 	50%      { box-shadow: 0 0 12px 2px var(--arcbright-glow-color, rgba(24, 160, 88, 0.12)); }
 }
 
-@keyframes hl-border {
-	0%, 100% { border-color: var(--arcbright-border-base, rgba(255,255,255,0.06)); }
+
 	50%      { border-color: var(--arcbright-border-glow, #18a058); }
 }
 
-@keyframes hl-blink {
-	50% { opacity: 0; }
+
 }
 
-@keyframes hl-pulse {
-	0%, 100% { opacity: 1; transform: scale(1); }
+
 	50%      { opacity: .5; transform: scale(1.6); }
 }
 
