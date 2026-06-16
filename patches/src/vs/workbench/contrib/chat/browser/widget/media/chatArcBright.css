@@ -1,0 +1,236 @@
+/*---------------------------------------------------------------------------------------------
+ *  ArcBright Chat Panel Design
+ *  Dark theme based on ArcBright IDE design system
+ *  Colors: void=#08090a, s1=#0f1011, s2=#191a1b, s3=#222326, jade=#18a058
+ *--------------------------------------------------------------------------------------------*/
+
+/* ═══ ArcBright CSS Variables (inherit from parent) ═══ */
+.arcbright-chat,
+.arcbright-widget,
+.arcbright-input-part {
+	--arcbright-void: #08090a;
+	--arcbright-s1: #0f1011;
+	--arcbright-s2: #191a1b;
+	--arcbright-s3: #222326;
+	--arcbright-jade: #18a058;
+	--arcbright-jg: rgba(24, 160, 88, 0.12);
+	--arcbright-border: rgba(255, 255, 255, 0.06);
+	--arcbright-border2: rgba(255, 255, 255, 0.1);
+	--arcbright-tx: #f7f8f8;
+	--arcbright-tx2: #a0a4ac;
+	--arcbright-tx3: #6b6f78;
+	--arcbright-cin: #d03050;
+	--arcbright-amb: #f0a020;
+	--arcbright-cy: #2080f0;
+}
+
+/* ═══ Chat Panel Background ═══ */
+.arcbright-chat {
+	background: var(--arcbright-s1) !important;
+}
+
+/* ═══ Avatar: Diamond Shape ═══ */
+.arcbright-avatar .avatar {
+	border-radius: 3px !important;
+	transform: rotate(45deg);
+	width: 24px !important;
+	height: 24px !important;
+	outline-color: var(--arcbright-border) !important;
+	background: var(--arcbright-s3) !important;
+}
+.arcbright-avatar .avatar .codicon,
+.arcbright-avatar .avatar .icon {
+	transform: rotate(-45deg);
+}
+.arcbright-avatar .avatar.codicon-avatar {
+	background: var(--arcbright-s3) !important;
+}
+
+/* ═══ Agent Name: Jade Color ═══ */
+.arcbright-agent-name {
+	color: var(--arcbright-jade) !important;
+	font-size: 10px !important;
+}
+
+/* ═══ Message Bubbles ═══ */
+/* User bubble (right-aligned) */
+.arcbright-bubble-right.interactive-request .value {
+	background: var(--arcbright-jade);
+	color: #fff;
+	padding: 10px 14px;
+	border-radius: 8px;
+	border-bottom-right-radius: 2px;
+	max-width: 82%;
+	margin-left: auto;
+}
+
+/* Assistant bubble (left-aligned) */
+.arcbright-bubble-left.interactive-response .value {
+	background: var(--arcbright-s2);
+	border: 1px solid var(--arcbright-border);
+	padding: 10px 14px;
+	border-radius: 8px;
+	border-bottom-left-radius: 2px;
+}
+
+/* ═══ Thinking State Animations ═══ */
+.hl-glow {
+	animation: hl-glow 2.5s ease-in-out infinite;
+}
+@keyframes hl-glow {
+	0%, 100% { box-shadow: 0 0 0 0 var(--arcbright-jg); }
+	50% { box-shadow: 0 0 12px 2px var(--arcbright-jg); }
+}
+
+.hl-border {
+	animation: hl-border 2.5s ease-in-out infinite;
+}
+@keyframes hl-border {
+	0%, 100% { border-color: var(--arcbright-border); }
+	50% { border-color: var(--arcbright-jade); }
+}
+
+.hl-pulse {
+	animation: hl-pulse 2s ease-in-out infinite;
+}
+@keyframes hl-pulse {
+	0%, 100% { opacity: 1; transform: scale(1); }
+	50% { opacity: 0.5; transform: scale(1.6); }
+}
+
+.hl-cursor::after {
+	content: '▌';
+	color: var(--arcbright-jade);
+	animation: hl-blink 1s step-end infinite;
+}
+@keyframes hl-blink {
+	50% { opacity: 0; }
+}
+
+.hl-active {
+	box-shadow: 0 0 8px var(--arcbright-jg);
+	border-color: var(--arcbright-jade);
+}
+
+/* ═══ ArcBright Thinking Row ═══ */
+.arcbright-thinking .header .username {
+	color: var(--arcbright-jade) !important;
+}
+
+/* ═══ Input: ArcBright Styling ═══ */
+.arcbright-input .chat-editor-container {
+	border-radius: 8px;
+}
+
+.arcbright-input .chat-editor-container:focus-within {
+	border-color: var(--arcbright-jade) !important;
+}
+
+/* ═══ Context Pills (cyan/amber/jade left border) ═══ */
+.arcbright-pill {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	padding: 3px 10px;
+	background: var(--arcbright-s3);
+	border: 1px solid var(--arcbright-border);
+	border-radius: 16px;
+	font-size: 10px;
+	color: var(--arcbright-tx2);
+	white-space: nowrap;
+	cursor: pointer;
+	flex-shrink: 0;
+}
+.arcbright-pill-l-cy { border-left: 2px solid var(--arcbright-cy); }
+.arcbright-pill-l-jd { border-left: 2px solid var(--arcbright-jade); }
+.arcbright-pill-l-am { border-left: 2px solid var(--arcbright-amb); }
+
+/* ═══ Stop Button (crimson, pulsing) ═══ */
+.arcbright-stop-btn {
+	width: 30px;
+	height: 30px;
+	border-radius: 8px;
+	background: var(--arcbright-cin);
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	animation: arcbright-pulse 2s infinite;
+}
+@keyframes arcbright-pulse {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.4; }
+}
+
+/* ═══ Send Button (jade circle) ═══ */
+.arcbright-send-btn {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: var(--arcbright-jade);
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.arcbright-send-btn:hover {
+	background: #1fad62;
+}
+
+/* ═══ Bottom Toolbar ═══ */
+.arcbright-bottom-toolbar {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 4px 16px 10px 16px;
+	font-size: 11px;
+	color: var(--arcbright-tx3);
+}
+.arcbright-bottom-toolbar .abt-item {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	cursor: pointer;
+}
+.arcbright-bottom-toolbar .abt-item:hover {
+	color: var(--arcbright-tx);
+}
+.arcbright-bottom-toolbar .abt-sep {
+	width: 1px;
+	height: 14px;
+	background: var(--arcbright-border);
+}
+.arcbright-bottom-toolbar .abt-right {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	font-size: 10px;
+	margin-left: auto;
+}
+
+/* ═══ Header Dot (green indicator) ═══ */
+.arcbright-dot {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--arcbright-jade);
+	box-shadow: 0 0 6px var(--arcbright-jg);
+	display: inline-block;
+	flex-shrink: 0;
+}
+
+/* ═══ Scrollbar ═══ */
+.arcbright-chat ::-webkit-scrollbar {
+	width: 5px;
+}
+.arcbright-chat ::-webkit-scrollbar-track {
+	background: transparent;
+}
+.arcbright-chat ::-webkit-scrollbar-thumb {
+	background: var(--arcbright-s3);
+	border-radius: 3px;
+}

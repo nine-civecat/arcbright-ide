@@ -1,0 +1,42 @@
+/* ArcBright Animation System
+ * Extracted from arcbright-ide-icons.html design reference
+ * ── hl-glow, hl-border, hl-cursor, hl-pulse ── */
+
+@keyframes hl-glow {
+	0%, 100% { box-shadow: 0 0 0 0 var(--arcbright-glow-color, rgba(24, 160, 88, 0.12)); }
+	50%      { box-shadow: 0 0 12px 2px var(--arcbright-glow-color, rgba(24, 160, 88, 0.12)); }
+}
+
+@keyframes hl-border {
+	0%, 100% { border-color: var(--arcbright-border-base, rgba(255,255,255,0.06)); }
+	50%      { border-color: var(--arcbright-border-glow, #18a058); }
+}
+
+@keyframes hl-blink {
+	50% { opacity: 0; }
+}
+
+@keyframes hl-pulse {
+	0%, 100% { opacity: 1; transform: scale(1); }
+	50%      { opacity: .5; transform: scale(1.6); }
+}
+
+.hl-glow   { animation: hl-glow 2.5s ease-in-out infinite; }
+.hl-border { animation: hl-border 2.5s ease-in-out infinite; }
+.hl-pulse  { animation: hl-pulse 2s ease-in-out infinite; }
+.hl-cursor::after { content: '\258C'; color: var(--arcbright-cursor-color, #18a058); animation: hl-blink 1s step-end infinite; }
+.hl-active { box-shadow: 0 0 8px var(--arcbright-glow-color, rgba(24, 160, 88, 0.12)); border-color: var(--arcbright-border-glow, #18a058); }
+
+/* Bottom toolbar styling */
+.arcbright-chat-bottom-toolbar {
+	display: flex; align-items: center; gap: 14px; padding: 4px 16px 10px 16px;
+	font-size: 11px; color: var(--vscode-descriptionForeground);
+}
+.abtb-item {
+	display: flex; align-items: center; gap: 5px; cursor: pointer;
+}
+.abtb-item:hover { color: var(--vscode-foreground); }
+.abtb-icon { width: 14px; height: 14px; flex-shrink: 0; }
+.abtb-sep { width: 1px; height: 14px; background: var(--vscode-widget-border); }
+.abtb-right { display: flex; align-items: center; gap: 14px; font-size: 10px; margin-left: auto; }
+.abtb-cost { color: var(--arcbright-jade, #18a058); }
